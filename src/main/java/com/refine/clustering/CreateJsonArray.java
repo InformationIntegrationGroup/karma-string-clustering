@@ -89,7 +89,7 @@ public class CreateJsonArray extends JSONArray {
 		
 		public int compareTo(ClusterRow o) {
 			if(numRows == o.numRows)
-				return o.string.compareToIgnoreCase(string);
+				return string.compareToIgnoreCase(o.string);
 			return (new Integer(o.numRows)).compareTo(numRows);
 		}
 	}
@@ -101,7 +101,7 @@ public class CreateJsonArray extends JSONArray {
 		
 		public int compareTo(OutputRow o) {
 			if(totalRowsAffected == o.totalRowsAffected)
-				return o.output.compareToIgnoreCase(output);
+				return output.compareToIgnoreCase(o.output);
 			return (new Integer(o.totalRowsAffected)).compareTo(totalRowsAffected);
 		}
 	}
