@@ -83,15 +83,9 @@ public class CreateJsonArray extends JSONArray {
 		
 	}
 	
-	private class ClusterRow implements Comparable<ClusterRow>{
+	private class ClusterRow {
 		private int numRows;
 		private String string;
-		
-		public int compareTo(ClusterRow o) {
-			if(numRows == o.numRows)
-				return string.compareToIgnoreCase(o.string);
-			return (new Integer(o.numRows)).compareTo(numRows);
-		}
 	}
 	
 	private class OutputRow implements Comparable<OutputRow> {
@@ -100,6 +94,9 @@ public class CreateJsonArray extends JSONArray {
 		private ArrayList<ClusterRow> clusters = new ArrayList<CreateJsonArray.ClusterRow>();
 		
 		public int compareTo(OutputRow o) {
+			if(!(clusters.size() == o.clusters.size()))
+				return new Integer(o.clusters.size()).compareTo(this.clusters.size());
+			
 			if(totalRowsAffected == o.totalRowsAffected)
 				return output.compareToIgnoreCase(o.output);
 			return (new Integer(o.totalRowsAffected)).compareTo(totalRowsAffected);
